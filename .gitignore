@@ -8,3 +8,4 @@ tmp
 /dist
 .tmp
 coverage
+/nbproject/private/

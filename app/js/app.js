@@ -3,7 +3,7 @@
 // Declare app level module which depends on filters, and services
 angular.module('musicAlbumApp', [
         'ngSanitize',
-        'elasticsearch',
+        'spotify',
         'musicAlbumApp.routes',
         'musicAlbumApp.filters',
         'musicAlbumApp.services',

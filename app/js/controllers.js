@@ -24,7 +24,7 @@ angular.module('musicAlbumApp.controllers', ['ui.bootstrap']).
             searchService.fullTextSearch(from, $scope.pageSize.count, text).then(
                 function (resp) {
                     $scope.searchResp = resp;
-                    $scope.totalItems = resp.hits.total;
+                    $scope.totalItems = resp.albums.total;
                 }
             );
         };
@@ -37,14 +37,15 @@ angular.module('musicAlbumApp.controllers', ['ui.bootstrap']).
             if (!$scope.isAvailableResults()) {
                 return false;
             }
-            return $scope.searchResp.hits.total > 0;
+            return $scope.searchResp.total > 0;
         };
 
         $scope.autocomplete = function (text) {
             return searchService.autocomplete(text).then(function (res) {
+                // TODO refactor 
                 var albums = [];
-                angular.forEach(res.hits.hits, function (hit) {
-                    albums.push(hit.fields['artist.name'] + ' - ' + hit.fields.name + ' (' + hit.fields.year + ')');
+                angular.forEach(res.artists.items, function (hit) {
+                    albums.push(hit['name']);
                 });
                 $scope.autocompleteResp = albums;
                 return albums;
