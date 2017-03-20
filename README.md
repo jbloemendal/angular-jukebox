@@ -4,10 +4,6 @@
 
 Simple **music album search web app** built with **AngularJS**.
 
-## Screenshot ##
-
-![Angular Jukebox Screenshot](https://raw.githubusercontent.com/jbloemendal/angular-jukebox/master/screenshot.png)
-
 ## Features ##
 
 * **Autocomplete** with highlighting
@@ -22,16 +18,9 @@ Simple **music album search web app** built with **AngularJS**.
 * `git clone https://github.com/jbloemendal/angular-jukebox`
 * Open the `app/index.html` file into Firefox
 
+## Screenshot ##
 
-## Powered by ##
-
-This project depends on several other open source projects:
-
-* **[AngularJS](http://angularjs.org/)**: the popular Google MVC JavaScript framework
-* **[Angular Seed](https://github.com/angular/angular-seed)**: application skeleton for a typical [AngularJS](http://angularjs.org/) web app
-* **[Bootstrap](Bootstrap)**: front-end framework for developing responsive
-* **[Angular UI Bootstrap](http://angular-ui.github.io/bootstrap/)**: Bootstrap components written in pure AngularJS
-* **[jQuery](http://jquery.com/)**: only used to asynchronously load JS files at runtime
+![Angular Jukebox Screenshot](https://raw.githubusercontent.com/jbloemendal/angular-jukebox/master/screenshot.png)
 
 
 ## Running unit tests
