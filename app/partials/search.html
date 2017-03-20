@@ -1,12 +1,8 @@
+<img id="logo" height="150px" src="img/angular-jukebox.png" />
+      
 <form class="form-horizontal well">
     <div class="form-group">
-        <div ng-hide="isAvailableResults()">
-            <div class="row text-center hidden-xs">
-                <!-- TODO logo? -->
-                <br/>
-            </div>
-        </div>
-        <label id="search-input-label" class="col-sm-3 control-label" ng-bind="translation.SEARCH_LABEL">Searching a music album</label>
+        <label id="search-input-label" class="col-sm-3 control-label" ng-bind="translation.SEARCH_LABEL">Searching an album</label>
         <div class="col-sm-6">
             <input type="text" class="form-control"  placeholder="{{translation.SEARCH_PLACEHOLDER}}" ng-model="searchText"
                    typeahead="album for album in autocomplete($viewValue) | filter:$viewValue" />
@@ -16,8 +12,6 @@
         </div>
     </div>
 </form>
-
-
 
 <div ng-show="isAvailableResults()">
     <div class="row">
@@ -39,15 +33,15 @@
             <table class="table table-striped">
                 <tr ng-repeat="album in searchResp.albums.items">
                     <td>
-                        <a title="album.images[0].id" href="{{album.images[0].url}}" target="blank">
+                        <a title="album.images[0].id" href="{{album.images[0].url}}" target="_blank">
                             <img width="125px" src="{{album.images[0].url}}" />
                         </a>
                     </td>
                     <td>
-                        <a href="{{album.external_urls.spotify}}" target="blank"><strong>{{album.name}}</strong></a>
+                        <a href="{{album.external_urls.spotify}}" target="_blank"><strong>{{album.name}}</strong></a>
                         {{translation.ALBUM_FROM}}
                         <span ng-repeat="artist in album.artists">
-                            <a href="{{artist.external_urls.spotify}}"><strong>{{artist.name}}</strong></a><br />
+                            <a href="{{artist.external_urls.spotify}}" target="_blank"><strong>{{artist.name}}</strong></a><br />
                         </span>
                     </td>
                 </tr>

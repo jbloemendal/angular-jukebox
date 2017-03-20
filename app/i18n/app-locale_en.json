@@ -1,7 +1,7 @@
 {
-    "SEARCH_LABEL" : "Searching a music album",
-    "SEARCH_PLACEHOLDER" : "Enter a music album",
-    "SEARCH_BUTTON" : "MusicBrainz Search",
+    "SEARCH_LABEL" : "Searching an album",
+    "SEARCH_PLACEHOLDER" : "Enter an artist name",
+    "SEARCH_BUTTON" : "Angular Jukebox Search",
     "SEARCH_RESULTS" : "result(s)",
     "SEARCH_MS" : "milliseconds",
     "SEARCH_PREVIOUS" : "Previous",

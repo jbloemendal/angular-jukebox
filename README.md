@@ -1,6 +1,12 @@
+![Angular Jukebox Logo](https://raw.githubusercontent.com/jbloemendal/angular-jukebox/master/app/img/angular-jukebox.png)
+
 # Angular Jukebox
 
 Simple **music album search web app** built with **AngularJS**.
+
+## Screenshot ##
+
+![Angular Jukebox Screenshot](https://raw.githubusercontent.com/jbloemendal/angular-jukebox/master/screenshot.png)
 
 ## Features ##
 
