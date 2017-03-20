@@ -9,3 +9,4 @@ tmp
 .tmp
 coverage
 /nbproject/private/
+/app/lib/

@@ -10,10 +10,6 @@ describe("route", function () {
             expect($route.routes['/search'].templateUrl).
                 toEqual('partials/search.html');
 
-            expect($route.routes['/info'].controller).toEqual('InfoCtrl');
-            expect($route.routes['/info'].templateUrl).
-                toEqual('partials/info.html');
-
             // otherwise redirect to
             expect($route.routes[null].redirectTo).toEqual('/search')
         });

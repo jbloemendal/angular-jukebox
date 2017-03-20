@@ -1,6 +1,6 @@
 'use strict';
 
-describe("Angular MusicBrainz App Module", function () {
+describe("Angular Jukebox App Module", function () {
 
     var module;
     beforeEach(function () {

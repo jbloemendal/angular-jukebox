@@ -2,11 +2,11 @@
   "name": "angular-musicbrainz",
   "version": "1.0.0",
   "dependencies": {
-    "angular": "1.2.13",
-    "angular-resource": "1.2.13",
-    "angular-route": "1.2.13",
-    "angular-sanitize": "1.2.13",
-    "angular-i18n": "1.2.13",
+    "angular": "1.2.23",
+    "angular-resource": "1.2.23",
+    "angular-route": "1.2.23",
+    "angular-sanitize": "1.2.23",
+    "angular-i18n": "1.2.23",
     "bootstrap": "3.1.1",
     "jquery": "2.1.0",
     "angular-ui-bootstrap-bower" : "0.10.0",
@@ -14,7 +14,7 @@
     "angular-spotify" : "1.2.1"
   },
   "devDependencies": {
-      "angular-mocks": "1.2.13",
+      "angular-mocks": "1.2.23",
       "angular-scenario": "1.2.13"
   }
 

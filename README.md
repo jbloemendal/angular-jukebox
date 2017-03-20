@@ -1,4 +1,4 @@
-# Angular MusicBrainz
+# Angular Jukebox
 
 Simple **music album search web app** built with **AngularJS**.
 

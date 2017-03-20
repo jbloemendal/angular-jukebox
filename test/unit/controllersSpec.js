@@ -2,7 +2,7 @@
 
 /* jasmine specs for controllers go here */
 
-describe('Angular MusicBrainz controllers', function () {
+describe('Angular Jukebox controllers', function () {
 
     var scope, ctrl;
 
@@ -27,43 +27,65 @@ describe('Angular MusicBrainz controllers', function () {
         //The actual before each for setting up common variables, dependencies or functions
         beforeEach(function () {
             mockSearchService.fullTextSearch = jasmine.createSpy('fullTextSearch');
-            mockSearchService.autocomplete = jasmine.createSpy('autocomplete');
-
+            
             var respDefer = $q.defer();
-
             //resolve on a defer and passing it data, will always run the first argument of the then() if you want to test the second one, write reject() instead, but here by default we want to resolve it and pass it an empty object that we can change it's value in any unit test
-            respData = {
-                hits: {
+            respDefer.resolve({
+                albums: {
                     total: 1,
-                    hits: [
-                        {  fields: {
-                            name: 'War',
-                            year: 1983,
-                            'artist.name':'U2'
-                        }
+                    items: [
+                        {  
+                            name: 'Gecekondu',
+                            artists: [{
+                                    id: '39zIRxvWFOGGH4hxGqRkLy',
+                                    name: 'Baba Zula',
+                                    external_urls: {
+                                        spotify: 'https://open.spotify.com/artist/39zIRxvWFOGGH4hxGqRkLy'
+                                    }
+                            }],
+                            external_urls: {
+                                spotify: 'https://open.spotify.com/album/1CULcHSBdeTyAfBXTJsEx3'
+                            },
+                            images: [
+                                {
+                                    height: 300,
+                                    width: 300,
+                                    url: 'https://i.scdn.co/image/73a7119d002dcf8b0c9ec28fe9aeab98b03eba4a'
+                                }
+                            ]
                         }
                     ]
                 }
-            };
-            respDefer.resolve(respData);
-
-            //defer.promise is actually the object that has the then() method
+            });
             mockSearchService.fullTextSearch.andReturn(respDefer.promise);
-            mockSearchService.autocomplete.andReturn(respDefer.promise);
+            //defer.promise is actually the object that has the then() method
+            
+            
+            mockSearchService.autocomplete = jasmine.createSpy('autocomplete');
+            var autocompleteRespDefer = $q.defer();
+            
+            //resolve on a defer and passing it data, will always run the first argument of the then() if you want to test the second one, write reject() instead, but here by default we want to resolve it and pass it an empty object that we can change it's value in any unit test
+            autocompleteRespDefer.resolve({
+                artists: {
+                    total: 1,
+                    items: [
+                        {  
+                            name: 'Baba Zula'
+                        }
+                    ]
+                }
+            });
+            mockSearchService.autocomplete.andReturn(autocompleteRespDefer.promise);
         });
 
         it('fullTextSearch should put the searchResp variable into the scope', function () {
-
             expect(scope.searchResp).toBeUndefined();
             expect(scope.isAvailableResults()).toBeFalsy();
             expect(scope.isAtLeastOneResult()).toBeFalsy();
 
-            scope.fullTextSearch('U2', 1);
-
-            // scope.$digest() will fire watchers on current scope,
-            // in short will run the callback function in the controller that will call anotherService.doSomething
+            scope.fullTextSearch('Gecekondu', 1);
             scope.$digest();
-
+            
             expect(scope.searchResp).toBeDefined();
             expect(scope.totalItems).toBeDefined();
             expect(scope.isAvailableResults()).toBeTruthy();
@@ -82,15 +104,15 @@ describe('Angular MusicBrainz controllers', function () {
             expect(scope.rangeGreaterThanZero({ count: 0})).toBeFalsy();
         });
 
-        it('autocomplete should return a single album', function () {
-            var albums = scope.autocomplete('U2');
+        it('autocomplete should return a single artist', function () {
+            var artists = scope.autocomplete('Baba Zula');
             // Propagate promise resolution to 'then' functions using $apply().
             scope.$apply();
 
-            expect(albums).toBeDefined();
+            expect(artists).toBeDefined();
             expect(scope.autocompleteResp).not.toBeNull();
             expect(scope.autocompleteResp.length).toEqual(1);
-            expect(scope.autocompleteResp[0]).toEqual('U2 - War (1983)');
+            expect(scope.autocompleteResp[0]).toEqual('Baba Zula');
         });
 
         it('selectPage should set currentPage scope variable to 20', function () {
@@ -99,20 +121,6 @@ describe('Angular MusicBrainz controllers', function () {
             expect(scope.currentPage).toEqual(20);
         });
 
-    });
-
-
-    describe('InfoCtrl', function () {
-
-        beforeEach(inject(function ($rootScope, $controller) {
-            scope = $rootScope.$new();
-            ctrl = $controller('InfoCtrl', {$scope: scope});
-        }));
-
-        it('should set demoUrl and demoSourceUrl variables', function () {
-            expect(scope.demoUrl).toBeDefined();
-            expect(scope.demoSourceUrl).toBeDefined();
-        });
     });
 
 });

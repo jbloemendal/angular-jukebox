@@ -21,12 +21,15 @@ angular.module('musicAlbumApp.controllers', ['ui.bootstrap']).
         $scope.fullTextSearch = function (text, page) {
             $scope.currentPage = page;
             var from = ($scope.currentPage - 1) * $scope.pageSize.count;
-            searchService.fullTextSearch(from, $scope.pageSize.count, text).then(
+            var deferred = searchService.fullTextSearch(from, $scope.pageSize.count, text);
+            deferred.then(
                 function (resp) {
+                    console.log('fullTextSearch');
                     $scope.searchResp = resp;
                     $scope.totalItems = resp.albums.total;
                 }
             );
+            return deferred;
         };
 
         $scope.isAvailableResults = function () {
@@ -37,28 +40,22 @@ angular.module('musicAlbumApp.controllers', ['ui.bootstrap']).
             if (!$scope.isAvailableResults()) {
                 return false;
             }
-            return $scope.searchResp.total > 0;
+            return $scope.totalItems > 0;
         };
 
         $scope.autocomplete = function (text) {
             return searchService.autocomplete(text).then(function (res) {
-                // TODO refactor 
-                var albums = [];
-                angular.forEach(res.artists.items, function (hit) {
-                    albums.push(hit['name']);
+                var artists = [];
+                angular.forEach(res.artists.items, function (artist) {
+                    artists.push(artist['name']);
                 });
-                $scope.autocompleteResp = albums;
-                return albums;
+                $scope.autocompleteResp = artists;
+                return artists;
             });
         };
 
         $scope.rangeGreaterThanZero = function (range) {
             return range.count > 0;
         };
-    }])
-    .controller('InfoCtrl', ['$scope', function ($scope) {
-        $scope.demoUrl = 'http://angular-musicbrainz.javaetmoi.com/';
-        $scope.demoSourceUrl = 'https://github.com/arey/angular-musicbrainz';
-        $scope.blogArticleUrl = 'http://javaetmoi.com/2014/02/developper-industrialiser-web-app-recherche-angularjs';
     }
 ]);
