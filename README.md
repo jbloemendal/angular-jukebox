@@ -1,5 +1,3 @@
-![Angular Jukebox Logo](https://raw.githubusercontent.com/jbloemendal/angular-jukebox/master/app/img/angular-jukebox.png)
-
 # Angular Jukebox
 
 Simple **music album search web app** built with **AngularJS**.
@@ -17,11 +15,6 @@ Simple **music album search web app** built with **AngularJS**.
 
 * `git clone https://github.com/jbloemendal/angular-jukebox`
 * Open the `app/index.html` file into Firefox
-
-## Screenshot ##
-
-![Angular Jukebox Screenshot](https://raw.githubusercontent.com/jbloemendal/angular-jukebox/master/screenshot.png)
-
 
 ## Running unit tests
 
